@@ -1,4 +1,4 @@
-name := "SearcherApp"
+name := "Searcher"
 
 version := "0.1"
 
