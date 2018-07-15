@@ -10,13 +10,15 @@ object SearcherApp extends App {
     throw new IllegalArgumentException("No​ ​directory​ ​given​ ​to​ ​index.")
   }
 
+  final val RESULTS_TO_RETURN = 10
+
   val fileHandler = new FileHandler
-  val dir = args(0)
-  val listOfFiles = fileHandler.files(dir)
+  val directory = args(0)
+  val listOfFiles = fileHandler.files(directory)
   val numOfFiles = listOfFiles.size
 
   if (numOfFiles > 0) {
-    println(s"$numOfFiles files read in directory $dir")
+    println(s"$numOfFiles files read in directory $directory")
     val loadedFiles = fileHandler.load(listOfFiles)
 
     while (true) {
@@ -36,12 +38,12 @@ object SearcherApp extends App {
             Result(file.name, foundPercentage)
           }
 
-          subsetOfResults(results, 3) foreach { res =>
-            println(format(res.filename, res.percentage))
+          subsetOfResults(results, RESULTS_TO_RETURN) foreach { result =>
+            println(format(result))
           }
       }
     }
   } else {
-    println(s"Did not find any files in $dir, exiting.")
+    println(s"Did not find any files in $directory, exiting.")
   }
 }

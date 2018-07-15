@@ -1,5 +1,5 @@
 package com.delprks.searcher
 
 object Formatter {
-  def format(filename: String, percentage: Int): String = s"$filename : $percentage%"
+  def format(result: Result): String = s"${result.filename} : ${result.percentage}%"
 }
