@@ -17,7 +17,7 @@ class FileHandler {
 
   def load(files: List[File]): List[LoadedFile] = {
     files.map { file =>
-      LoadedFile(file.getName, fromFile(file.getName).getLines().toIndexedSeq)
+      LoadedFile(file.getName, fromFile(file.getAbsolutePath, "ISO-8859-1").getLines().toIndexedSeq)
     }
   }
 }
