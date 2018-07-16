@@ -1,7 +1,8 @@
-package com.delprks.searcher
+package com.delprks.searcher.analyse
 
+import com.delprks.searcher.analyse.Analyser._
+import com.delprks.searcher.output.Result
 import org.scalatest.FunSuite
-import Analyser._
 
 class AnalyserTest extends FunSuite {
 

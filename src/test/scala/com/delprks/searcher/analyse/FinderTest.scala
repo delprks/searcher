@@ -1,7 +1,7 @@
-package com.delprks.searcher
+package com.delprks.searcher.analyse
 
+import com.delprks.searcher.analyse.Finder._
 import org.scalatest.FunSuite
-import Finder._
 
 class FinderTest extends FunSuite {
 

@@ -1,9 +1,11 @@
 package com.delprks.searcher
 
 import scala.io.StdIn.readLine
-import Finder._
-import Analyser._
-import Formatter._
+import com.delprks.searcher.analyse.Finder._
+import com.delprks.searcher.analyse.Analyser._
+import com.delprks.searcher.output.Formatter._
+import com.delprks.searcher.file.FileHandler
+import com.delprks.searcher.output.Result
 
 object SearcherApp extends App {
   if (args.length == 0) {
@@ -27,7 +29,10 @@ object SearcherApp extends App {
       val userInput = readLine()
 
       userInput match {
-        case ":quit" => System.exit(0)
+        case ":quit" =>
+          println("Exiting.")
+          System.exit(0)
+
         case searchTerm =>
           val searchSet: Set[String] = searchTerm.toLowerCase.split(" ").toSet
 

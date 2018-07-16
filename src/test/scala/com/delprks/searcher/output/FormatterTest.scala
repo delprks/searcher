@@ -1,7 +1,7 @@
-package com.delprks.searcher
+package com.delprks.searcher.output
 
+import com.delprks.searcher.output.Formatter._
 import org.scalatest.FunSuite
-import Formatter._
 
 class FormatterTest extends FunSuite {
 

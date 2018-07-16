@@ -1,4 +1,6 @@
-package com.delprks.searcher
+package com.delprks.searcher.analyse
+
+import com.delprks.searcher.output.Result
 
 object Analyser {
   def percentage(words: Set[String], result: Set[String]): Int = {

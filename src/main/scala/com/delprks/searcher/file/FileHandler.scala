@@ -1,6 +1,7 @@
-package com.delprks.searcher
+package com.delprks.searcher.file
 
 import java.io.File
+
 import scala.io.Source.fromFile
 
 class FileHandler {
