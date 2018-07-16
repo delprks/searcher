@@ -2,6 +2,7 @@ package com.delprks.searcher.file
 
 import java.io.File
 
+import scala.collection.parallel.ParSeq
 import scala.io.Source.fromFile
 
 class FileHandler {
@@ -16,8 +17,8 @@ class FileHandler {
     }
   }
 
-  def load(files: List[File]): List[LoadedFile] = {
-    files.map { file =>
+  def load(files: List[File]): ParSeq[LoadedFile] = {
+    files.toParArray.map { file =>
       LoadedFile(file.getName, fromFile(file.getAbsolutePath, "ISO-8859-1").getLines().toIndexedSeq)
     }
   }

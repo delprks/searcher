@@ -31,4 +31,16 @@ class FinderTest extends FunSuite {
     assert(find(words, fileContent).isEmpty)
   }
 
+  test("stringToUniqueWords method should extract unique words from give String") {
+    val input = "To be or not to be"
+
+    assert(stringToUniqueWords(input) == Set("to", "be", "or", "not"))
+  }
+
+  test("stringToUniqueWords method should include words with apostrophe") {
+    val input = "It's to be or not to be"
+
+    assert(stringToUniqueWords(input) == Set("it's", "to", "be", "or", "not"))
+  }
+
 }

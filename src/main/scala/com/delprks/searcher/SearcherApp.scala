@@ -4,8 +4,10 @@ import scala.io.StdIn.readLine
 import com.delprks.searcher.analyse.Finder._
 import com.delprks.searcher.analyse.Analyser._
 import com.delprks.searcher.output.Formatter._
-import com.delprks.searcher.file.FileHandler
+import com.delprks.searcher.file.{FileHandler, LoadedFile}
 import com.delprks.searcher.output.Result
+
+import scala.collection.parallel.ParSeq
 
 object SearcherApp extends App {
   if (args.length == 0) {
@@ -21,7 +23,7 @@ object SearcherApp extends App {
 
   if (numOfFiles > 0) {
     println(s"$numOfFiles files read in directory $directory")
-    val loadedFiles = fileHandler.load(listOfFiles)
+    val loadedFiles: ParSeq[LoadedFile] = fileHandler.load(listOfFiles)
 
     while (true) {
       print("search> ")
@@ -34,16 +36,16 @@ object SearcherApp extends App {
           System.exit(0)
 
         case searchTerm =>
-          val searchSet: Set[String] = searchTerm.toLowerCase.split(" ").toSet
+          val searchQuery: Set[String] = stringToUniqueWords(searchTerm)
 
-          val results: List[Result] = loadedFiles map { file =>
-            val foundWords = find(searchSet, file.content)
-            val foundPercentage = percentage(searchSet, foundWords)
+          val results: ParSeq[Result] = loadedFiles map { file =>
+            val foundWords = find(searchQuery, file.content)
+            val foundPercentage = percentage(searchQuery, foundWords)
 
             Result(file.name, foundPercentage)
           }
 
-          subsetOfResults(results, RESULTS_TO_RETURN) foreach { result =>
+          subsetOfResults(results.toList, RESULTS_TO_RETURN) foreach { result =>
             println(format(result))
           }
       }
