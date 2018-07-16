@@ -51,6 +51,6 @@ object SearcherApp extends App {
       }
     }
   } else {
-    println(s"Did not find any files in $directory, exiting.")
+    println(s"Did not find any text files in $directory, exiting.")
   }
 }

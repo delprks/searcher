@@ -7,11 +7,15 @@ import scala.io.Source.fromFile
 
 class FileHandler {
 
+  final val SUPPORTED_FILES = List("txt")
+
   def files(dir: String): List[File] = {
     val directory = new File(dir)
 
     if (directory.exists && directory.isDirectory) {
-      directory.listFiles.filter(_.isFile).toList
+      directory.listFiles.filter(_.isFile).toList.filter { file =>
+        SUPPORTED_FILES.exists(file.getName.endsWith(_))
+      }
     } else {
       List[File]()
     }
