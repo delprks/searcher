@@ -2,19 +2,21 @@
 
 Searcher is a simple ​command​ ​line​ ​text​ ​search​ ​engine, capable of finding words in text files.
 
-## Usage
+## Run
 
-Run the application using SBT:
+You can run the included JAR:
 
 ```bash
-sbt "run /foo/bar"
+java -jar Searcher-0.1.jar test-files/
 ```
 
-For example:
+Or alternatively run the application using SBT:
 
 ```bash
 sbt "run test-files/"
 ```
+
+## Usage
 
 You can then search the loaded files for words (they will be converted to lowercase):
 
