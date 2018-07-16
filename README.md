@@ -16,7 +16,7 @@ For example:
 sbt "run test-files/"
 ```
 
-You can then search the loaded files for words (they will converted to lowercase):
+You can then search the loaded files for words (they will be converted to lowercase):
 
 ```bash
 search> to be or not to be
