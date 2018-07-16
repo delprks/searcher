@@ -4,7 +4,7 @@ Searcher is a simple ​command​ ​line​ ​text​ ​search​ ​engine,
 
 ## Run
 
-You can run the included JAR:
+You can run the included JAR to search content of `test-files` directory:
 
 ```bash
 java -jar Searcher-0.1.jar test-files/
